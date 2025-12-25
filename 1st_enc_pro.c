@@ -144,8 +144,25 @@ End program
 #include <stdlib.h>
 #include <string.h>
 
+// Substution Method
 
-//simple encryptio just increasing the ascii value and changing alphabate 
+void encryption(char *str_enc, int key_enc)
+{
+    int i;
+    // loop will stop at last so '\0'
+    for (i = 0; str_enc[i] != '\0'; i++)
+    {
+        // its ignore the newline and continue
+        if (str_enc[i] != '\n')
+        {
+            str_enc[i] += key_enc;
+        }
+    }
+
+    printf("String after encryption is : %s", str_enc);
+}
+
+// simple encryptio just increasing the ascii value and changing alphabate
 int main()
 {
     char *str_enc;
@@ -176,18 +193,7 @@ int main()
     printf("Encryption key is :");
     printf("%d\n", key_enc);
 
-    // loop will stop at last so '\0'
-    for (i = 0; str_enc[i] != '\0'; i++)
-    {
-        // its ignore the newline and continue
-        if (str_enc[i] != '\n')
-        {
-            str_enc[i] += key_enc;
-        }
-    }
-
-    printf("String after encryption is : %s",str_enc);
-
+    encryption(str_enc, key_enc);
     free(str_enc);
 
     return 0;
