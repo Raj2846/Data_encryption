@@ -145,8 +145,20 @@ End program
 #include <string.h>
 
 // Substution Method
+// simple encryptio just increasing the ascii value and changing alphabate
 
-void encryption(char *str_enc, int key_enc)
+//we are returnong the value of this function and use it in decryption as an input
+/*char * (before the function name)
+
+This is the return type.
+
+It means:
+
+The function returns a pointer to char (i.e., a string)
+*/
+
+
+char *encryption(char *str_enc, int key_enc)
 {
     int i;
     // loop will stop at last so '\0'
@@ -160,9 +172,27 @@ void encryption(char *str_enc, int key_enc)
     }
 
     printf("String after encryption is : %s", str_enc);
+    return str_enc;
 }
 
-// simple encryptio just increasing the ascii value and changing alphabate
+
+void decryption(char *str_enc, int key_enc)
+{
+    int i;
+    // loop will stop at last so '\0'
+    for (i = 0; str_enc[i] != '\0'; i++)
+    {
+        // its ignore the newline and continue
+        if (str_enc[i] != '\n')
+        {
+            str_enc[i] -= key_enc;
+        }
+    }
+
+    printf("String after decryption is : %s", str_enc);
+}
+
+
 int main()
 {
     char *str_enc;
@@ -193,8 +223,9 @@ int main()
     printf("Encryption key is :");
     printf("%d\n", key_enc);
 
-    encryption(str_enc, key_enc);
-    free(str_enc);
+    str_enc=encryption(str_enc, key_enc);
+    decryption(str_enc,key_enc);
 
+    free(str_enc);
     return 0;
 }

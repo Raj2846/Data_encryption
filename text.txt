@@ -1,0 +1,11 @@
+Simple shift / XOR encryption ✔
+
+Block cipher concept ✔
+
+AES structure ✔
+
+Modes of operation ✔
+
+Password-based key derivation ✔
+
+Public-key basics ✔
